@@ -1,0 +1,10 @@
+" This isn't the vimrc file that we care about, .vimrc should be the name and
+" located elsewhere
+" Dont be vim compatible
+set nocompatible
+
+source ~/dotfiles/vim/plugins.vimrc
+source ~/dotfiles/vim/mappings.vimrc
+source ~/dotfiles/vim/editor.vimrc
+source ~/dotfiles/vim/graphical.vimrc
+source ~/dotfiles/vim/search.vimrc
