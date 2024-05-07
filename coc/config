@@ -1,0 +1,13 @@
+{
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+  "zig.zigPath": "/home/raunak/zig-linux-x86_64-0.12.0-dev.3412+54c08579e",
+  "zig.zls.path": "/home/raunak",
+  "zig": {
+  "path": "/home/raunak/zls",
+  "command": "zls",
+  "filetypes": [
+    "zig"
+  ]
+}
+}
+

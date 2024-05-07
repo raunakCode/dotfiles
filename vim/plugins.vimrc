@@ -7,6 +7,7 @@ endif
 call plug#begin()
 Plug 'vim-python/python-syntax'
 Plug 'petRUShka/vim-sage'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bfrg/vim-cpp-modern'
 Plug 'vim-airline/vim-airline'
 Plug 'lervag/vimtex'
