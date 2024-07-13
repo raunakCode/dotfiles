@@ -7,3 +7,9 @@ You can install Conquerer of Completion (Coc) by:
     * You should look through the config files.
     * To run zig, you need to get zig, add to PATH, get zls, add to PATH
     * Then put said path into the config files
+
+b
+shrc:
+    * ulimit -s unlimited
+
+

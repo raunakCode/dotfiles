@@ -5,6 +5,9 @@ filetype indent on
 " Enable syntax highlighting
 set syntax=on
 
+" Turn off bells
+set belloff=all
+
 " Enable mouse
 set mouse=a
 
@@ -46,9 +49,15 @@ set autoread
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Select region and then type :Hash to hash your selection.
+" Useful for verifying that there aren't mistypes.
+ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
+ \| md5sum \| cut -c-6
+
 " Insert template to contest-files [1, 2, 3, ...]A.cpp
 autocmd BufNewFile *A.cpp 0r $HOME/kod/cp/lib/template.cpp
 autocmd BufNewFile *TEST.cpp 0r $HOME/kod/cp/lib/template.cpp
+autocmd BufNewFile *kactl.cpp 0r $HOME/kod/cp/lib/kactl/content/contest/template.cpp
 
 " Clipboard configuration (yank->clip.exe)
 let s:clip = '/mnt/c/Windows/System32/clip.exe' 
