@@ -44,7 +44,7 @@ template<typename T, typename H> using fast_set_h = __gnu_pbds::gp_hash_table<T,
 template<typename T, typename U> using fast_map = __gnu_pbds::gp_hash_table<T, U, chash>;
  
 #ifdef DEBUG
-#include "/home/ac41991/kod/cp/lib/debug.cpp"
+#include "/home/redkar/kod/cp/lib/debug.cpp"
 #else
 #define dbg(...)
 #define dbgArr(...)
