@@ -1,10 +1,17 @@
+// not my code, taken from https://github.com/Anshul-Johri-1/Debug-Template/
+
 #ifndef DEBUG_TEMPLATE_CPP
 #define DEBUG_TEMPLATE_CPP
 #include <bits/stdc++.h>
-// #define cerr cout
+// #define cerr cout 
 namespace __DEBUG_UTIL__
 {
     using namespace std;
+    bool I_want_colored_output = true; /* ONLY WORKS WITH TERMINAL */
+    string white = I_want_colored_output ? "\033[0;m" : "";
+    string outer = I_want_colored_output ? "\033[0;31m" : "";    // red
+    string varName = I_want_colored_output ? "\033[1;34m" : "";  // blue
+    string varValue = I_want_colored_output ? "\033[1;32m" : ""; // green
     template <typename T>
     concept is_iterable = requires(T &&x) { begin(x); } &&
                           !is_same_v<remove_cvref_t<T>, string>;
@@ -12,7 +19,7 @@ namespace __DEBUG_UTIL__
     void print(char x) { cerr << "\'" << x << "\'"; }
     void print(bool x) { cerr << (x ? "T" : "F"); }
     void print(string x) { cerr << "\"" << x << "\""; }
-    void print(vector<bool> &v)
+    void print(vector<bool> &&v)
     { /* Overloaded this because stl optimizes vector<bool> by using
          _Bit_reference instead of bool to conserve space. */
         int f = 0;
@@ -29,9 +36,10 @@ namespace __DEBUG_UTIL__
             { /* Iterable inside Iterable */
                 int f = 0;
                 cerr << "\n~~~~~\n";
+                int w = max(0, (int)log10(size(x) - 1)) + 2;
                 for (auto &&i : x)
                 {
-                    cerr << setw(2) << left << f++, print(i), cerr << "\n";
+                    cerr << setw(w) << left << f++, print(i), cerr << "\n";
                 }
                 cerr << "~~~~~\n";
             }
@@ -80,35 +88,39 @@ namespace __DEBUG_UTIL__
                 bracket++;
             else if (names[i] == ')' or names[i] == '>' or names[i] == '}')
                 bracket--;
-        cerr.write(names, i) << " = ";
+        cerr << varName;
+        cerr.write(names, i) << outer << " = " << varValue;
         print(head);
         if constexpr (sizeof...(tail))
-            cerr << " ||", printer(names + i + 1, tail...);
+            cerr << outer << " ||", printer(names + i + 1, tail...);
         else
-            cerr << "]\n";
+            cerr << outer << "]\n"
+                 << white;
     }
     template <typename T, typename... V>
     void printerArr(const char *names, T arr[], size_t N, V... tail)
     {
         size_t i = 0;
+        cerr << varName;
         for (; names[i] and names[i] != ','; i++)
             cerr << names[i];
         for (i++; names[i] and names[i] != ','; i++)
             ;
-        cerr << " = {";
+        cerr << outer << " = " << varValue << "{";
         for (size_t ind = 0; ind < N; ind++)
             cerr << (ind ? "," : ""), print(arr[ind]);
         cerr << "}";
         if constexpr (sizeof...(tail))
-            cerr << " ||", printerArr(names + i + 1, tail...);
+            cerr << outer << " ||", printerArr(names + i + 1, tail...);
         else
-            cerr << "]\n";
+            cerr << outer << "]\n"
+                 << white;
     }
-}
 
-#ifdef DEBUG
-#define dbg(...) std::cerr << "\e[92m" <<__LINE__<< ": [", __DEBUG_UTIL__::printer(#__VA_ARGS__, __VA_ARGS__); std::cerr << "\e[97m"
-#define dbgArr(...) std::cerr << "\e[92m" << __LINE__ << ": [", __DEBUG_UTIL__::printerArr(#__VA_ARGS__, __VA_ARGS__); std::cerr << "\e[97m"
+}
+#ifndef ONLINE_JUDGE
+#define dbg(...) std::cerr << __DEBUG_UTIL__::outer << __LINE__ << ": [", __DEBUG_UTIL__::printer(#__VA_ARGS__, __VA_ARGS__)
+#define dbgArr(...) std::cerr << __DEBUG_UTIL__::outer << __LINE__ << ": [", __DEBUG_UTIL__::printerArr(#__VA_ARGS__, __VA_ARGS__)
 #else
 #define dbg(...)
 #define dbgArr(...)
