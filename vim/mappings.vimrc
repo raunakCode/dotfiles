@@ -23,7 +23,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-set makeprg=g++\ -DDEBUG\ -fmax-errors=1\ -ggdb\ -Wall\ -Wextra\ -O2\ -std=c++20\ -o\ %:r\ %
+set makeprg=g++\ -DDEBUG\ -fmax-errors=1\ -ggdb\ -Wall\ -Wextra\ -O2\ -std=c++23\ -o\ %:r\ %
 "set makeprg=g++\ -DDEBUG\ -fmax-errors=4\ -fsanitize=address,undefined\ -ggdb\ -Wall\ -Wextra\ -O2\ -std=c++17\ -o\ %:r\ %
 autocmd filetype cpp nnoremap <F8> :w <bar> make <CR>
 autocmd filetype cpp nnoremap <F9> :vertical terminal ++shell ++cols=60 ./%:r<CR>
@@ -47,17 +47,17 @@ autocmd filetype * nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1) :
+"       \ CheckBackspace() ? "\<Tab>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'

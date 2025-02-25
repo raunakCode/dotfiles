@@ -13,4 +13,7 @@ b
 shrc:
     * ulimit -s unlimited
 
+Making terminal nice:
+    * Install neofetch 
+    * Install synth shell -> yes prompt, no rest
 
