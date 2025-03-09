@@ -57,3 +57,8 @@ autocmd VimLeave * silent !echo -ne "\033]112\007"
 
 " set statusline
 set laststatus=2
+
+" make encoding better
+set encoding=utf-8
+" set fileencoding=utf-8
+
