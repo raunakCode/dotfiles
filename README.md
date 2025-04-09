@@ -14,6 +14,7 @@ shrc:
     * ulimit -s unlimited
 
 Making terminal nice:
-    * Install neofetch 
+    * Install fastfetch
+        - Install to PPA -> sudo apt install fastfetch
     * Install synth shell -> yes prompt, no rest
 
