@@ -15,8 +15,8 @@ set mouse=a
 " set expandtab
 
 " Make tabs be 4 spaces
-set shiftwidth=8
-set tabstop=8
+set shiftwidth=4
+set tabstop=4
 
 " set java specific indentation settings
 autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4
@@ -93,4 +93,7 @@ let g:vimtex_compiler_latexmk = {
 "			\ set nornu |
 "			\ set number |
 "			\ let g:loaded_matchparen=1 |
+
+
+autocmd BufRead,BufNewFile *.pl set filetype=prolog
 
