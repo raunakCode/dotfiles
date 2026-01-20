@@ -1,13 +1,23 @@
 {
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
-  "zig.zigPath": "/home/raunak/zig-linux-x86_64-0.12.0-dev.3412+54c08579e",
-  "zig.zls.path": "/home/raunak",
-  "zig": {
-  "path": "/home/raunak/zls",
-  "command": "zls",
-  "filetypes": [
-    "zig"
-  ]
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
+    },
+	  "ccls": {
+		"command": "ccls",
+		"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+		"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+		"initializationOptions": {
+			"cache": {
+			  "directory": "/tmp/ccls"
+			}
+		}
+	}
+  },
+  "suggest.autoTrigger": "none"
 }
-}
+
 
