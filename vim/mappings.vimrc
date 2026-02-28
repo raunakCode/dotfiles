@@ -22,6 +22,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap zz zz6<C-y>
 
 set makeprg=g++\ -DDEBUG\ -Wfatal-errors\ -Wconversion\ -Wall\ -Wextra\ -g\ -O2\ -std=c++20\ -fsanitize=undefined,address\ -o\ %:r\ %
 autocmd filetype cpp nnoremap <F8> :w <bar> make <CR>

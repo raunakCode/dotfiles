@@ -20,6 +20,8 @@ Making terminal nice:
     * Install synth shell -> yes prompt, no rest
 
 problemtools problems:
-    - python virtual environment for requirements can be necessary
-    - kernel.randomize_va_space = 0 in /etc/sysctl.conf for disabling aslr on wsl
+    * python virtual environment for requirements can be necessary
+    * kernel.randomize_va_space = 0 in /etc/sysctl.conf for disabling aslr on wsl
 
+Opencode:
+    * curl -fsSL https://opencode.ai/install | bash

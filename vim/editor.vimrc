@@ -12,7 +12,7 @@ set belloff=all
 set mouse=a
 
 " Use spaces instead of tabs
-" set expandtab
+set expandtab
 
 " Make tabs be 4 spaces
 set shiftwidth=4
